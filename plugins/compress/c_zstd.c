@@ -104,9 +104,10 @@ my_bool ma_zstd_decompress(ma_compress_ctx *ctx, void *dst, size_t *dst_len,
 }
 
 #ifndef PLUGIN_DYNAMIC
-MARIADB_COMPRESSION_PLUGIN zstd_client_plugin=
-#else
 MARIADB_CLIENT_PLUGIN_EXPORT MARIADB_COMPRESSION_PLUGIN
+    zstd_client_plugin=
+#else
+MARIADB_CLIENT_PLUGIN_EXPORT MARIADB_CLIENT_PLUGIN_EXPORT MARIADB_COMPRESSION_PLUGIN
     _mysql_client_plugin_declaration_=
 #endif
 {
